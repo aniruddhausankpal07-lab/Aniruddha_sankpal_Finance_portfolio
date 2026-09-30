@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Aniruddha Sankpal | Finance Executive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Three.js for Advanced 3D Visualizations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    body, h1, h2, h3, h4, h5, h6, p, span, a, input, textarea, button, li {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+    }
+    .mono {
+      font-family: Consolas, 'Courier New', monospace;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Mobile-Optimized Glassmorphic Card Styles */
+    .glass-card-light {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+    }
+    @media (min-width: 768px) {
+      .glass-card-hover {
+        transition: all 0.3s ease;
+      }
+      .glass-card-hover:hover {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(99, 102, 241, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px -5px rgba(99, 102, 241, 0.08);
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#ffffff] text-slate-800 selection:bg-indigo-600 selection:text-white relative overflow-x-hidden">
+
+  <!-- Mobile-Optimized 3D Canvas -->
+  <canvas id="canvas3d" class="fixed inset-0 pointer-events-none z-10"></canvas>
+
+  <!-- Responsive Header Navigation -->
+  <nav class="fixed top-2 sm:top-5 inset-x-2 sm:inset-x-8 max-w-6xl mx-auto py-2.5 px-4 rounded-full border border-slate-200/80 bg-white/90 backdrop-blur-md shadow-sm flex justify-between items-center z-50">
+    <span class="font-bold tracking-wider text-xs sm:text-sm uppercase flex items-center gap-2 shrink-0 text-slate-900">
+      <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-pulse"></span>
+      ANIRUDDHA.SANKPAL
+    </span>
+    
+    <div class="hidden lg:flex gap-6 text-sm mono text-slate-600 font-medium">
+      <a href="#summary" class="hover:text-indigo-600 transition">SUMMARY</a>
+      <a href="#experience" class="hover:text-indigo-600 transition">EXPERIENCE</a>
+      <a href="#skills" class="hover:text-indigo-600 transition">SKILLS</a>
+      <a href="#projects" class="hover:text-indigo-600 transition">PROJECTS</a>
+      <a href="#education" class="hover:text-indigo-600 transition">EDUCATION</a>
+    </div>
+
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <a href="mailto:aniruddhasankpal45@gmail.com" class="text-[11px] sm:text-xs mono bg-indigo-600 text-white px-3 py-1.5 rounded-full hover:bg-indigo-700 transition">
+        Contact ✉
+      </a>
+      <a href="mailto:aniruddhasankpal45@gmail.com" class="text-[11px] sm:text-xs mono bg-slate-900 text-white px-3 py-1.5 rounded-full hover:bg-slate-800 transition">
+        Email ✉
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-20 z-20 pt-20 sm:pt-24">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-full text-[11px] sm:text-sm mono text-indigo-900 mb-4 sm:mb-8 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+        FINANCE EXECUTIVE
+      </div>
+
+      <h1 class="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight mb-4 sm:mb-6">
+        ANIRUDDHA SANKPAL
+      </h1>
+
+      <p class="text-sm sm:text-lg md:text-xl text-slate-700 max-w-xl leading-relaxed glass-card-light p-4 sm:p-5 rounded-2xl mb-6 font-normal">
+        Finance professional with experience in accounting operations, GST compliance, MIS reporting, revenue reconciliation, collections, audit support, and ERP process automation.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="mailto:aniruddhasankpal45@gmail.com" class="text-xs sm:text-sm mono bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 shadow-md transition font-bold text-center flex items-center justify-center gap-2">
+          <span>CONTACT ME</span>
+          <span>✉</span>
+        </a>
+        <a href="#projects" class="text-xs sm:text-sm mono bg-white border border-slate-300 px-6 py-3 rounded-full hover:bg-slate-50 transition text-slate-800 font-bold shadow-sm text-center">
+          EXPLORE PROJECTS ↓
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 sm:mt-12 flex items-center gap-3 text-[10px] sm:text-xs mono tracking-widest text-slate-500">
+      <span class="animate-pulse">↓ SCROLL TO ROTATE 3D GEOMETRY</span>
+      <span class="w-8 sm:w-16 h-[1px] bg-slate-300"></span>
+    </div>
+  </section>
+
+  <!-- Key Metrics Matrix -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative z-20">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+      <div class="glass-card-light glass-card-hover rounded-2xl p-4 sm:p-5 text-center">
+        <span class="text-2xl sm:text-4xl font-bold text-indigo-600 block mb-0.5">2+ Yrs</span>
+        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 block mb-0.5">Finance &amp; Accounting</span>
+        <span class="text-[10px] sm:text-xs mono text-slate-500">Homesfy + Sumaria</span>
+      </div>
+      <div class="glass-card-light glass-card-hover rounded-2xl p-4 sm:p-5 text-center">
+        <span class="text-2xl sm:text-4xl font-bold text-purple-600 block mb-0.5">GST / TDS</span>
+        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 block mb-0.5">Tax Compliance</span>
+        <span class="text-[10px] sm:text-xs mono text-slate-500">Returns &amp; Reconciliations</span>
+      </div>
+      <div class="glass-card-light glass-card-hover rounded-2xl p-4 sm:p-5 text-center">
+        <span class="text-2xl sm:text-4xl font-bold text-cyan-600 block mb-0.5">ERP Automation</span>
+        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 block mb-0.5">Process Improvement</span>
+        <span class="text-[10px] sm:text-xs mono text-slate-500">Reduced Manual Entries</span>
+      </div>
+      <div class="glass-card-light glass-card-hover rounded-2xl p-4 sm:p-5 text-center">
+        <span class="text-2xl sm:text-4xl font-bold text-emerald-600 block mb-0.5">MIS Reporting</span>
+        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 block mb-0.5">Finance Operations</span>
+        <span class="text-[10px] sm:text-xs mono text-slate-500">Management Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Summary -->
+  <section id="summary" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-16 relative z-20">
+    <div class="glass-card-light rounded-3xl p-5 sm:p-8 md:p-12">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 sm:pb-6 mb-4 sm:mb-6 border-b border-slate-200 gap-3">
+        <div>
+          <span class="text-[10px] sm:text-xs mono text-indigo-600 tracking-wider uppercase font-bold">PROFESSIONAL PROFILE</span>
+          <h2 class="text-2xl sm:text-4xl font-bold text-slate-900 mt-0.5">ANIRUDDHA SANKPAL</h2>
+          <p class="text-xs sm:text-sm mono text-slate-600 mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>Thane, Maharashtra</span> • <span>aniruddhasankpal45@gmail.com</span> • <span>+91 7208542039</span> • 
+            <a href="#" target="_blank" class="text-indigo-600 font-bold hover:underline">LinkedIn ↗</a>
+          </p>
+        </div>
+        <div>
+          <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-700 text-xs mono px-3 py-1.5 rounded-full border border-indigo-200 font-bold">
+            <span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+            FINANCE PROFESSIONAL
+          </span>
+        </div>
+      </div>
+      <p class="text-slate-700 text-sm sm:text-lg md:text-xl leading-relaxed font-normal">
+        Finance Executive with 2.5 years of experience in GST Compliance, MIS Reporting, and Financial Audits; skilled in Accounting Operations, Revenue Recognition, and Banking Financial Services, ensuring regulatory compliance and operational efficiency.
+      </p>
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section id="experience" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-16 relative z-20">
+    <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">PROFESSIONAL EXPERIENCE</p>
+    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight mb-6 sm:mb-8 text-slate-900">Career History</h3>
+    
+    <div class="space-y-5">
+      <div class="glass-card-light rounded-2xl p-5 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-4 border-b border-slate-200 gap-1 sm:gap-0">
+          <div>
+            <h4 class="text-lg sm:text-2xl font-bold text-slate-900">Finance Executive</h4>
+            <p class="text-xs sm:text-base font-semibold text-indigo-600">Homesfy Realty Limited</p>
+          </div>
+          <div class="mt-1 sm:mt-0">
+            <span class="text-xs mono text-slate-700 bg-slate-100 px-3 py-1 rounded-full font-medium inline-block border border-slate-200">Finance &amp; Accounting</span>
+            <p class="text-xs text-slate-500 mt-0.5">Thane / Mumbai, Maharashtra</p>
+          </div>
+        </div>
+        <ul class="space-y-2.5 sm:space-y-3 text-xs sm:text-base text-slate-700 leading-relaxed list-disc pl-4 sm:pl-5">
+          <li>Manage overall accounting operations, ensuring accuracy and compliance with accounting standards.</li>
+          <li>Create sales orders and generate e-invoices in alignment with GST regulations.</li>
+          <li>File GSTR-1 and maintain accurate records for tax compliance.</li>
+          <li>Prepare monthly MIS reports to support management decision-making.</li>
+          <li>Compile and maintain sales incentive summaries for sales team members.</li>
+          <li>Handle auditor queries and provide data and reconciliations during internal and statutory audits.</li>
+          <li>Manage collections and perform monthly reconciliation of revenue and receipts.</li>
+          <li>Ensure accurate revenue recognition and matching of collections with corresponding invoices.</li>
+          <li>Automate ERP processes for sales, purchase, and other accounting transactions, reducing manual entries and saving time.</li>
+        </ul>
+      </div>
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-4 border-b border-slate-200 gap-1 sm:gap-0">
+          <div>
+            <h4 class="text-lg sm:text-2xl font-bold text-slate-900">Accountant</h4>
+            <p class="text-xs sm:text-base font-semibold text-indigo-600">Sumaria &amp; Sumaria</p>
+          </div>
+          <div class="mt-1 sm:mt-0">
+            <span class="text-xs mono text-slate-700 bg-slate-100 px-3 py-1 rounded-full font-medium inline-block border border-slate-200">May 2022 – Aug 2023</span>
+            <p class="text-xs text-slate-500 mt-0.5">Accounting &amp; Taxation</p>
+          </div>
+        </div>
+        <ul class="space-y-2.5 sm:space-y-3 text-xs sm:text-base text-slate-700 leading-relaxed list-disc pl-4 sm:pl-5">
+          <li>Maintained day-to-day accounting transactions and entered vouchers and bank statements into the system.</li>
+          <li>Posted payable invoices and journal entries on a timely basis.</li>
+          <li>Participated in financial audits and supported audit requirements.</li>
+          <li>Filed GST returns on a monthly basis.</li>
+          <li>Filed Profession Tax returns on a monthly basis.</li>
+          <li>Filed TDS returns (24Q &amp; 26Q) and ITR returns.</li>
+          <li>Performed reconciliation of client accounts.</li>
+        </ul>
+      </div>
+    </div>
+        <div class="mt-1 sm:mt-0">
+          <span class="text-xs mono text-slate-700 bg-slate-100 px-3 py-1 rounded-full font-medium inline-block border border-slate-200">Current / Recent</span>
+          <p class="text-xs text-slate-500 mt-0.5">Thane, Maharashtra</p>
+        </div>
+      </div>
+      <ul class="space-y-2.5 sm:space-y-3 text-xs sm:text-base text-slate-700 leading-relaxed list-disc pl-4 sm:pl-5">
+        <li>Manage the overall accounting operations of the company, ensuring accuracy and compliance with accounting standards.</li>
+        <li>Create sales orders and generate e-invoices in alignment with GST regulations.</li>
+        <li>File GSTR-1 and maintain accurate records for tax compliance.</li>
+        <li>Prepare monthly MIS reports to support management decision-making.</li>
+        <li>Compile and maintain sales incentive summaries for sales team members.</li>
+        <li>Handle auditor queries and provide required data and reconciliations during internal and statutory audits.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills Matrix -->
+  <section id="skills" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:pb-20 relative z-20">
+    <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">CORE COMPETENCIES</p>
+    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight mb-6 sm:mb-8 text-slate-900">Finance, Accounting &amp; Taxation</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6">
+        <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4">📊 Finance &amp; Reporting</h4>
+        <div class="flex flex-wrap gap-1.5 sm:gap-2">
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">MS Office</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">MIS Reporting</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Financial Analysis</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Management Reporting</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Data Reconciliation</span>
+        </div>
+      </div>
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6">
+        <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4">⚙️ Accounting Tools</h4>
+        <div class="flex flex-wrap gap-1.5 sm:gap-2">
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">ERP Process Automation</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Tally</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Zoho Books</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">MS Office</span>
+        </div>
+      </div>
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6 md:col-span-2">
+        <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4">📋 Accounting &amp; Compliance</h4>
+        <div class="flex flex-wrap gap-1.5 sm:gap-2">
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Accounting Operations</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Revenue Reconciliation</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">GST Compliance</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Audit Support</span>
+          <span class="text-xs mono bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl">Collections Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:pb-20 relative z-20">
+    <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">ACADEMIC &amp; PROFESSIONAL PROJECTS</p>
+    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight mb-6 sm:mb-8 text-slate-900">Projects &amp; Practical Exposure</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+      
+      <div class="glass-card-light glass-card-hover rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] sm:text-xs mono text-indigo-600 font-bold mb-1.5 block">ACADEMIC PROJECT</span>
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 mb-3">Accounting &amp; Financial Activities</h4>
+          <ul class="text-xs sm:text-sm text-slate-700 space-y-2 list-disc pl-4 mb-4">
+            <li>Completed an academic project focused on the accounting and financial activities of GP Parsik Sahakari Bank.</li>
+            <li>Studied financial activities, accounting processes, and banking operations as part of the finance specialization.</li>
+            <li>Applied finance and accounting concepts to understand the bank's financial operations.</li>
+          </ul>
+        </div>
+        <div class="pt-3 border-t border-slate-200">
+          <span class="text-[11px] sm:text-xs mono text-slate-500">Focus: Accounting, Banking Operations, Financial Activities</span>
+        </div>
+      </div>
+
+      <div class="glass-card-light glass-card-hover rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] sm:text-xs mono text-purple-600 font-bold mb-1.5 block">BANKING INTERNSHIP</span>
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 mb-3">GP Parsik Sahakari Bank – Accounts Department</h4>
+          <ul class="text-xs sm:text-sm text-slate-700 space-y-2 list-disc pl-4 mb-4">
+            <li>Completed an internship at the Head Office in the Accounts Department from May 2024 to July 2024.</li>
+            <li>Learned RTGS and NEFT backend processes, RBI rules and regulations, investment strategies, TDS and GST processes, and ASBA transactions.</li>
+            <li>Prepared the ALM sheet for the year 2023–24.</li>
+          </ul>
+        </div>
+        <div class="pt-3 border-t border-slate-200">
+          <span class="text-[11px] sm:text-xs mono text-slate-500">Exposure: Banking Operations, RBI Regulations, GST, TDS, ALM</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education & Certifications -->
+  <section id="education" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:pb-20 relative z-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6">
+        <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">ACADEMIC BACKGROUND</p>
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Education</h3>
+        <div class="space-y-3.5 text-xs sm:text-sm text-slate-700">
+          <div class="pb-3 border-b border-slate-200">
+            <p class="font-bold text-slate-900">Master of Management Studies (MMS) – Finance</p>
+            <p class="text-slate-500">Dr. V.N. Bedekar Institute of Management Studies, Thane • 8.00 CGPA (2025)</p>
+          </div>
+          <div class="pb-3 border-b border-slate-200">
+            <p class="font-bold text-slate-900">Bachelor of Management Studies</p>
+            <p class="text-slate-500">Sheth N.K.T.T. College of Commerce, Arts &amp; Science • University of Mumbai • 8.28 CGPA (2023)</p>
+          </div>
+          <div class="pb-3 border-b border-slate-200">
+            <p class="font-bold text-slate-900">Higher Secondary Education – Commerce</p>
+            <p class="text-slate-500">Sheth N.K.T.T. College of Commerce, Arts &amp; Science • Maharashtra State Board • 62.00% (2019)</p>
+          </div>
+          <div>
+            <p class="font-bold text-slate-900">Secondary School Certification</p>
+            <p class="text-slate-500">Padmavati Venkatesh High School, Kalwa • Maharashtra State Board • 63.60% (2018)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6">
+        <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">VERIFIED CREDENTIALS</p>
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Certifications &amp; Training</h3>
+        <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+          <li><strong class="text-slate-900">GST &amp; Taxation</strong> – 30-hour Certificate Course</li>
+          <li><strong class="text-slate-900">Stock Market Course</strong> – Great Learning</li>
+          <li><strong class="text-slate-900">SEBI Investors Certificate Examination</strong> – NISM</li>
+          <li><strong class="text-slate-900">Technical Proficiency</strong> – MS Office, Tally, Zoho Books</li>
+          <li><strong class="text-slate-900">Professional Strength</strong> – Effective Communication</li>
+        </ul>
+      </div>
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6">
+        <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">BANKING EXPOSURE</p>
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">GP Parsik Sahakari Bank</h3>
+        <p class="text-xs sm:text-sm text-slate-500 mb-3">Accounts Department • May 2024 – July 2024</p>
+        <ul class="space-y-2 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+          <li>Learned RTGS and NEFT backend processes.</li>
+          <li>Studied RBI rules and regulations related to co-operative banks.</li>
+          <li>Learned about investment strategies, TDS and GST in the Accounts Department.</li>
+          <li>Learned about ASBA transactions.</li>
+          <li>Prepared the ALM sheet for the year 2023–24.</li>
+        </ul>
+      </div>
+
+      <div class="glass-card-light rounded-2xl p-5 sm:p-6">
+        <p class="text-xs mono text-indigo-600 mb-1 uppercase tracking-widest font-bold">ACADEMIC &amp; PERSONAL</p>
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Achievements &amp; Interests</h3>
+        <ul class="space-y-2 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+          <li>Volunteer – Business Model Presentation Competition “Canvas Clash” (2023–24).</li>
+          <li>Member – IIC and Learners Paradise (2023–24).</li>
+          <li>Hosted an event for juniors as part of IIC.</li>
+          <li>Certificate of Participation – NSE Visit.</li>
+          <li>Interests: Trekking, exploring new places, and listening to music.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16 relative z-20">
+    <div class="glass-card-light rounded-3xl p-5 sm:p-8 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <p class="text-xs mono text-indigo-600 uppercase tracking-widest font-bold mb-2">LANGUAGES</p>
+          <p class="text-sm text-slate-700">English • Hindi • Marathi</p>
+        </div>
+        <div>
+          <p class="text-xs mono text-indigo-600 uppercase tracking-widest font-bold mb-2">ACADEMIC PROJECT</p>
+          <p class="text-sm text-slate-700">Accounting and Financial Activities of GP Parsik Sahakari Bank</p>
+        </div>
+        <div>
+          <p class="text-xs mono text-indigo-600 uppercase tracking-widest font-bold mb-2">CONTACT</p>
+          <p class="text-sm text-slate-700">aniruddhasankpal45@gmail.com<br>+91 7208542039</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="relative z-20 border-t border-slate-200 bg-white/80 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row justify-between gap-2 text-xs mono text-slate-500">
+      <span>© 2026 Aniruddha Sankpal</span>
+      <span>MMS Finance • Finance Executive</span>
+    </div>
+  </footer>
+
+  <!-- MOBILE-OPTIMIZED 3D WHITE BACKGROUND ENGINE -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas3d');
+      if (!canvas) return;
+
+      const isMobile = window.innerWidth < 768;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 0, 15);
+
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      // --- Minimal Grid Surface ---
+      const gridHelper = new THREE.GridHelper(60, 30, 0xcbd5e1, 0xf1f5f9);
+      gridHelper.position.y = -8;
+      gridHelper.rotation.x = 0.2;
+      scene.add(gridHelper);
+
+      // --- Floating Geometric Cubes ---
+      const cubesGroup = new THREE.Group();
+      scene.add(cubesGroup);
+
+      const cubeMat = new THREE.MeshBasicMaterial({
+        color: 0x6366f1,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.15
+      });
+
+      const cubes = [];
+      const numCubes = isMobile ? 8 : 15;
+
+      for (let i = 0; i < numCubes; i++) {
+        const size = Math.random() * 1.5 + 0.5;
+        const geo = new THREE.BoxGeometry(size, size, size);
+        const mesh = new THREE.Mesh(geo, cubeMat);
+
+        mesh.position.set(
+          (Math.random() - 0.5) * (isMobile ? 20 : 30),
+          (Math.random() - 0.5) * (isMobile ? 15 : 20),
+          (Math.random() - 0.5) * 15
+        );
+
+        mesh.userData = {
+          rotSpeedX: (Math.random() - 0.5) * 0.01,
+          rotSpeedY: (Math.random() - 0.5) * 0.01
+        };
+
+        cubesGroup.add(mesh);
+        cubes.push(mesh);
+      }
+
+      // --- Interaction Tracking ---
+      let scrollY = 0;
+      let mouseX = 0;
+      let mouseY = 0;
+
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
+      }, { passive: true });
+
+      if (!isMobile) {
+        window.addEventListener('mousemove', (e) => {
+          mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+          mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // --- Render Loop ---
+      function animate() {
+        requestAnimationFrame(animate);
+
+        cubes.forEach(cube => {
+          cube.rotation.x += cube.userData.rotSpeedX;
+          cube.rotation.y += cube.userData.rotSpeedY;
+        });
+
+        cubesGroup.rotation.y = scrollY * Math.PI * 0.5;
+        gridHelper.position.z = scrollY * 10;
+
+        if (!isMobile) {
+          camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+          camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05;
+        }
+        camera.lookAt(0, 0, 0);
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    });
+  </script>
+
+</body>
+</html>
